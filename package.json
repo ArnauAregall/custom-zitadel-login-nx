@@ -3,7 +3,12 @@
   "private": true,
   "name": "@zitadel/zitadel",
   "scripts": {
-    "clean:all": "pnpm run clean && rm -rf .nx node_modules"
+	"packages:proto:generate": "pnpm --filter @zitadel/proto run generate",
+	"packages:client:build": "pnpm --filter @zitadel/client run build",
+	"packages:build": "pnpm run packages:proto:generate && pnpm run packages:client:build",
+	"upstream:fetch:all": "./zitadel_upstream_fetch.sh all",
+    "clean:all": "nx clean && pnpm run clean:upstream && rm -rf .nx node_modules",
+	"clean:upstream": "./zitadel_upstream_fetch.sh clean"
   },
   "devDependencies": {
     "nx": "21.5.2"
