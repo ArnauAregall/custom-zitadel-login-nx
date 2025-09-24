@@ -3,6 +3,7 @@
   "private": true,
   "name": "@zitadel/zitadel",
   "scripts": {
+	"local:env": "bash -c 'if [ -z \"$1\" ]; then echo \"❌ Error: missing token argument\" >&2; exit 1; fi; TOKEN=\"$1\"; echo -e \"ZITADEL_API_URL=http://localhost:8080\\nZITADEL_SERVICE_USER_TOKEN=$TOKEN\\nEMAIL_VERIFICATION=true\" > apps/login/.env.local && echo \"✅ apps/login/.env.local created\"' _",
 	"packages:proto:generate": "pnpm --filter @zitadel/proto run generate",
 	"packages:client:build": "pnpm --filter @zitadel/client run build",
 	"packages:build": "pnpm run packages:proto:generate && pnpm run packages:client:build",
