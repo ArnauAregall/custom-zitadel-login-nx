@@ -43,6 +43,13 @@ login-client.pat
 admin.pat
 .env.*local
 
+# Zitadel upstream repository cloned directories
+proto/
+packages/
+
+# Temporal cloned repos
+tmp_*
+
 # Local Netlify folder
 .netlify
 
