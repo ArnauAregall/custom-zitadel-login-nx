@@ -5,7 +5,5 @@
 
 pnpm install
 
-pnpm packages:build
-
-nx run @zitadel/login:build
+nx run-many --targets lint build
 ```

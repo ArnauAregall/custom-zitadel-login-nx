@@ -2,19 +2,19 @@
   "$schema": "./node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "targets": {
+	"db": {
+	  "continuous": true,
+	  "description": "Runs a local Postgres database for development",
+	  "command": "nx run @zitadel/devcontainer:compose up db",
+	  "options": {
+		"cwd": "{workspaceRoot}/.devcontainer"
+	  }
+	},
     "clean": {
       "description": "Cleans all local-only files relating to the Login.",
       "dependsOn": [
         "@zitadel/login:clean"
       ]
-    },
-	"build": {
-	  "description": "Packages archives for the Login.",
-	  "dependsOn": [
-		"@zitadel/login:build"
-	  ],
-	  "executor": "nx:run-commands",
-	  "cache": true
-	}
+    }
   }
 }

@@ -5,7 +5,7 @@
 # ================================
 UPSTREAM_REPO="https://github.com/zitadel/zitadel.git"
 UPSTREAM_BRANCH="remove-turbo-2"
-TMP_DIR="tmp_upstream_zitadel_$UPSTREAM_BRANCH"
+TMP_DIR=".artifacts/tmp_upstream_zitadel_$UPSTREAM_BRANCH"
 
 # ================================
 # Utility functions

@@ -2,8 +2,5 @@ packages:
   - packages/*
   - apps/*
 
-exclude:
-  - benchmark
-
 overrides:
   '@typescript-eslint/parser': ^8.35.1

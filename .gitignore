@@ -42,10 +42,10 @@ node_modules/
 login-client.pat
 admin.pat
 .env.*local
+.artifacts
 
 # Zitadel upstream repository cloned directories
 proto/
-packages/
 
 # Temporal cloned repos
 tmp_*
@@ -62,4 +62,3 @@ dist
 # Nx
 .nx/cache
 .nx/workspace-data
-.cursor/rules/nx-rules.mdc
