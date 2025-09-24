@@ -1,0 +1,11 @@
+{
+  "packageManager": "pnpm@10.13.1",
+  "private": true,
+  "name": "@zitadel/zitadel",
+  "scripts": {
+    "clean:all": "pnpm run clean && rm -rf .nx node_modules"
+  },
+  "devDependencies": {
+    "nx": "21.5.2"
+  }
+}
