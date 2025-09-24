@@ -47,13 +47,12 @@ sync_from_upstream() {
   echo "Fetching '$target_dir/' from upstream..."
 
   ensure_dir "$target_dir"
-  ensure_gitignore_entry "$target_dir"
 
   rsync -a \
     --exclude '.git' \
     "$TMP_DIR/$upstream_subdir/" "$target_dir/"
 
-  echo "✅ '$target_dir/' updated from upstream and gitignored"
+  echo "✅ '$target_dir/' updated from upstream"
 }
 
 # Clean temp dir only
@@ -78,27 +77,25 @@ clean_all() {
 # Main entrypoint
 # ================================
 case "$1" in
-  proto)
+  login)
     clone_upstream
-    sync_from_upstream "proto" "proto"
-    clean_tmp
-    ;;
-  packages)
-    clone_upstream
-    sync_from_upstream "packages" "packages"
+    sync_from_upstream "apps/login" "apps/login"
     clean_tmp
     ;;
   all)
     clone_upstream
     sync_from_upstream "proto" "proto"
+    ensure_gitignore_entry "proto"
     sync_from_upstream "packages" "packages"
+    sync_from_upstream "apps/login" "apps/login"
+    sync_from_upstream ".devcontainer" ".devcontainer" # for testing
     clean_tmp
     ;;
   clean)
     clean_all
     ;;
   *)
-    echo "Usage: $0 {proto|packages|all|clean}"
+    echo "Usage: $0 {login|all|clean}"
     exit 1
     ;;
 esac

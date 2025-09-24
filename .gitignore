@@ -60,5 +60,6 @@ dist
 .pnpm-store
 
 # Nx
+.nx
 .nx/cache
 .nx/workspace-data
