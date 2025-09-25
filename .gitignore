@@ -43,6 +43,7 @@ login-client.pat
 admin.pat
 .env.*local
 .artifacts
+packages/.changeset
 
 # Zitadel upstream repository cloned directories
 proto/
