@@ -6,6 +6,12 @@ if [ -f /.env-file/.env ]; then
     set +o allexport
 fi
 
+if [ -f /.env-secrets/.env.secrets ]; then
+    set -o allexport
+    . /.env-secrets/.env.secrets
+    set +o allexport
+fi
+
 if [ -n "${ZITADEL_SERVICE_USER_TOKEN_FILE}" ]; then
     echo "ZITADEL_SERVICE_USER_TOKEN_FILE=${ZITADEL_SERVICE_USER_TOKEN_FILE} is set. Awaiting file and reading token."
     while [ ! -f "${ZITADEL_SERVICE_USER_TOKEN_FILE}" ]; do

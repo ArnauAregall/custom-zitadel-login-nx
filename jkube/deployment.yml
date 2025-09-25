@@ -1,0 +1,34 @@
+spec:
+  selector:
+    matchLabels:
+      provider: fabric8
+  template:
+    spec:
+      volumes:
+        - name: ${project.artifactId}-config-volume
+          configMap:
+            name: ${project.artifactId}-config
+        - name: ${project.artifactId}-secret-volume
+          secret:
+            secretName: ${project.artifactId}-login-secret
+            items:
+              - key: .env.secrets
+                path: .env.secrets
+      containers:
+        - volumeMounts:
+            - name: ${project.artifactId}-config-volume
+              mountPath: /.env-file/
+            - name: ${project.artifactId}-secret-volume
+              mountPath: /.env-secrets/
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /_next/static/health.json
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /_next/static/health.json
+              port: 3000
