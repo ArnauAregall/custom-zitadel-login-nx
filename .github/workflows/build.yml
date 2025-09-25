@@ -44,5 +44,8 @@ jobs:
       - name: Install pnpm dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install nx globally
+        run: pnpm add --global nx
+
       - name: Build with quality checks
         run: nx run-many --targets lint build test
