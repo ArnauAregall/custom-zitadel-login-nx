@@ -77,6 +77,12 @@ clean_all() {
 # Main entrypoint
 # ================================
 case "$1" in
+  proto)
+    clone_upstream
+    sync_from_upstream "proto" "proto"
+    ensure_gitignore_entry "proto"
+    clean_tmp
+    ;;
   login)
     clone_upstream
     sync_from_upstream "apps/login" "apps/login"
@@ -95,7 +101,7 @@ case "$1" in
     clean_all
     ;;
   *)
-    echo "Usage: $0 {login|all|clean}"
+    echo "Usage: $0 {proto|login|all|clean}"
     exit 1
     ;;
 esac
