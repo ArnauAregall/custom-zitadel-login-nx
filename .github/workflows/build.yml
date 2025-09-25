@@ -47,5 +47,8 @@ jobs:
       - name: Install nx globally
         run: pnpm add --global nx
 
+      - name: Install Cypress binary
+        run: pnpm exec cypress install
+
       - name: Build with quality checks
         run: nx run-many --targets lint build test
