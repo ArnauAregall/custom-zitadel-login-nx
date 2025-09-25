@@ -1,5 +1,7 @@
 # custom-zitadel-login-nx
 
+[![Build Project](https://github.com/ArnauAregall/custom-zitadel-login-nx/actions/workflows/build.yml/badge.svg)](https://github.com/ArnauAregall/custom-zitadel-login-nx/actions/workflows/build.yml)
+
 This repository is a fork of the [zitadel/zitadel](https://github.com/zitadel/zitadel) project. It contains only the essential Nx workspace projects required to build a custom login application using Next.js.
 
 ## About
