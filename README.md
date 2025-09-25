@@ -67,3 +67,12 @@ To set up the project locally, follow these steps:
    ```shell
     nx run-many --targets lint build test
     ```
+   
+### Build Docker Image
+
+```shell
+ docker buildx build \
+  -f apps/login/Dockerfile \
+  -t custom-zitadel-login-nx:latest \
+  apps/login
+```
