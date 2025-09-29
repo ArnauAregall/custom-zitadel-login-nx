@@ -88,8 +88,8 @@
         "^build"
       ]
     },
-    "test-integration-app": {
-      "description": "Runs the Login application under test",
+    "test-integration-run-login": {
+      "description": "Runs the Login application under test. It has its own target, separate from test-integration, because it's a continuous task.",
       "dependsOn": [
         "build"
       ],
@@ -99,7 +99,7 @@
     "test-integration": {
       "description": "Runs integration tests using Cypress against a running Login and a mocked API",
       "dependsOn": [
-        "test-integration-app",
+        "test-integration-run-login",
         "@zitadel/login-api-mock:build",
         "@zitadel/login-api-mock:serve"
       ],
@@ -108,7 +108,9 @@
         "cwd": "{projectRoot}",
         "parallel": false,
         "commands": [
-          "pnpm wait-on --verbose --interval 2000 --simultaneous 1 \"tcp:${API_MOCK_STUBS_HOST}:22220\" \"http-get://localhost:3000/ui/v2/login/verify?userId=221394658884845598&code=abc\" && DISPLAY='' pnpm cypress run --headless",
+          "pnpm cypress install",
+          "pnpm wait-on --verbose --interval 2000 --simultaneous 1 \"tcp:${API_MOCK_STUBS_HOST}:22220\" \"http-get://localhost:3000/ui/v2/login/verify?userId=221394658884845598&code=abc\"",
+          "DISPLAY='' pnpm cypress run --headless",
           "nx run @zitadel/login-api-mock:down"
         ]
       },

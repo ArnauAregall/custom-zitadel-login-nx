@@ -1,4 +1,5 @@
 import { defineConfig } from "cypress";
+import { unlinkSync } from 'fs'
 
 export default defineConfig({
   reporter: "list",
@@ -13,9 +14,6 @@ export default defineConfig({
     pageLoadTimeout: 120_0000,
     env: {
       API_MOCK_STUBS_URL: process.env.API_MOCK_STUBS_URL || "http://localhost:22220/v1/stubs"
-    },
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
+    }
   },
 });

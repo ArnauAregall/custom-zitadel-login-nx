@@ -3,10 +3,11 @@
   "name": "@zitadel/devcontainer",
   "targets": {
     "compose": {
-      "description": "Run docker compose commands",
-      "command": "docker compose -f docker-compose.yaml -p zitadel_devcontainer",
+      "description": "Runs arbitrary Docker Compose commands with dev container support. All running services are manageable and addressable from in- and outside the dev container. The services are defined in .devcontainer/docker-compose.yaml.",
+      "executor": "nx:run-commands",
       "options": {
-        "cwd": "{projectRoot}"
+        "cwd": "{projectRoot}",
+        "command": "./compose.sh"
       }
     }
   }
