@@ -44,6 +44,8 @@ admin.pat
 .env.*local
 .artifacts
 packages/.changeset
+# Zitadel login upstream relies on a root login-client.pat file
+apps/login/.env
 
 # Zitadel upstream repository cloned directories
 proto/

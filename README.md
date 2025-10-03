@@ -30,7 +30,7 @@ For more information about Zitadel, visit the [zitadel/zitadel GitHub repository
 
 ## Getting Started
 
-### Installing Local Dependencies
+### Installing Dependencies
 
 To set up the project locally, follow these steps:
 
@@ -61,13 +61,53 @@ To set up the project locally, follow these steps:
    ```shell
     pnpm install
     ```
-   
-5. Build and test the projects using Nx:
 
-   ```shell
-    nx run-many --targets lint build test
-    ```
+### Building and Testing
+
+To build and test the project, follow these steps:
+
+1. Build and test the projects using Nx:
+
+```shell
+pnpm nx run-many --targets lint build test
+```
+
+2. Clean NX cache  (optional):
+NX caches build and test results to speed up subsequent runs. If you want to clear the cache, you can run:
+
+```shell
+pnpm nx reset
+```
+
+3. Clean the entire repository (optional):
+If you want to remove all generated files and start fresh, you can run:
+
+```shell
+pnpm nx run-many --targets clean
+```
    
+### Running the Application
+
+To run the custom login application locally:
+
+1. Generate local `.env.local` file sourcing an IAM Login Client PAT:
+
+```shell
+pnpm run local:env 1s5678e4da5s45sa43a5e4s6d4a5s4d
+```
+
+By default, the script will create a `.env.local` file in the `apps/login` directory targeting a local Zitadel instance. You can modify the script to point to a remote Zitadel instance if needed.
+
+```text
+# Example for remote Zitadel instance
+ZITADEL_API_URL=https://remote.zitadel.com
+```
+
+2. Start the development server:
+```shell
+pnpm nx run @zitadel/login:dev
+```
+
 ### Build Docker Image
 
 ```shell
