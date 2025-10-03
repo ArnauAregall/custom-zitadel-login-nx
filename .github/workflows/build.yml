@@ -39,7 +39,7 @@ jobs:
           version: v2.38.2
 
       - name: Fetch Zitadel upstream
-        run: ./zitadel_upstream_fetch.sh proto
+        run: ./tools/scripts/zitadel_upstream_fetch.sh proto
 
       - name: Install pnpm dependencies
         run: pnpm install --frozen-lockfile
