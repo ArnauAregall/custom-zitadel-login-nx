@@ -3,7 +3,7 @@
   "private": true,
   "name": "@zitadel/zitadel",
   "scripts": {
-	"local:env": "bash -c 'if [ -z \"$1\" ]; then echo \"❌  Error: missing IAM Login Client PAT argument.\n❌  please run: pnpm run local:dev your_pat_with_iam_login_client_role\" >&2; exit 1; fi; TOKEN=\"$1\"; echo -e \"ZITADEL_API_URL=http://localhost:8080\\nZITADEL_SERVICE_USER_TOKEN=$TOKEN\\nNEXT_PUBLIC_BASE_PATH=\"\"\\nEMAIL_VERIFICATION=true\\nDEBUG=true\" > apps/login/.env.local && echo \" ✅  apps/login/.env.local created\"' _",
+	"local:env": "sh ./scripts/zitadel_setup_local_env_vars.sh",
 	"upstream:fetch:all": "./zitadel_upstream_fetch.sh all",
     "clean:all": "nx clean && pnpm run clean:upstream && rm -rf .nx node_modules",
 	"clean:upstream": "./zitadel_upstream_fetch.sh clean"

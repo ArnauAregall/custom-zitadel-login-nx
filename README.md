@@ -67,46 +67,47 @@ To set up the project locally, follow these steps:
 To build and test the project, follow these steps:
 
 1. Build and test the projects using Nx:
-
-```shell
-pnpm nx run-many --targets lint build test
-```
+    
+    ```shell
+    pnpm nx run-many --targets lint build test
+    ```
 
 2. Clean NX cache  (optional):
-NX caches build and test results to speed up subsequent runs. If you want to clear the cache, you can run:
+    NX caches build and test results to speed up subsequent runs. If you want to clear the cache, you can run:
+    
+    ```shell
+    pnpm nx reset
+    ```
 
-```shell
-pnpm nx reset
-```
+   3. Clean the entire repository (optional):
+   If you want to remove all generated files and start fresh, you can run:
 
-3. Clean the entire repository (optional):
-If you want to remove all generated files and start fresh, you can run:
-
-```shell
-pnpm nx run-many --targets clean
-```
+    ```shell
+    pnpm nx run-many --targets clean
+    ```
    
 ### Running the Application
 
 To run the custom login application locally:
 
-1. Generate local `.env.local` file sourcing an IAM Login Client PAT:
+1. Generate local `.env.local` file sourcing an IAM Login Client PAT
 
-```shell
-pnpm run local:env 1s5678e4da5s45sa43a5e4s6d4a5s4d
-```
-
-By default, the script will create a `.env.local` file in the `apps/login` directory targeting a local Zitadel instance. You can modify the script to point to a remote Zitadel instance if needed.
-
-```text
-# Example for remote Zitadel instance
-ZITADEL_API_URL=https://remote.zitadel.com
-```
+    ```shell
+    pnpm run local:env https://localhost:8080 pat_iam_login_client
+    ```
+    
+    The command above will create a `apps/login/.env.local` file with the necessary environment variables to connect to the specified Zitadel instance.
+    
+    To run the application against a remote Zitadel instance, configure the arguments accordingly:
+    ```shell
+    pnpm run local:env https://remote.zitadel.com remote_pat_iam_login_client
+    ```
 
 2. Start the development server:
-```shell
-pnpm nx run @zitadel/login:dev
-```
+
+    ```shell
+    pnpm nx run @zitadel/login:dev
+    ```
 
 ### Build Docker Image
 
