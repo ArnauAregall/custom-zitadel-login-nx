@@ -3,10 +3,13 @@
   "private": true,
   "name": "@zitadel/zitadel",
   "scripts": {
-	"local:env": "sh ./scripts/zitadel_setup_local_env_vars.sh",
-	"upstream:fetch:all": "./zitadel_upstream_fetch.sh all",
-    "clean:all": "nx clean && pnpm run clean:upstream && rm -rf .nx node_modules",
-	"clean:upstream": "./zitadel_upstream_fetch.sh clean"
+	"local:env": "sh tools/scripts/zitadel_setup_local_env_vars.sh",
+	"local:env:clean": "rm login-client.pat && rm apps/login/.env.local",
+	"upstream:fetch:all": "bash tools/scripts/zitadel_upstream_fetch.sh all",
+	"upstream:fetch:proto": "bash tools/scripts/zitadel_upstream_fetch.sh proto",
+	"upstream:fetch:login": "bash tools/scripts/zitadel_upstream_fetch.sh login",
+	"upstream:clean": "bash tools/scripts/zitadel_upstream_fetch.sh clean",
+    "clean:all": "nx clean && pnpm run clean:upstream && rm -rf .nx node_modules"
   },
   "devDependencies": {
     "nx": "21.5.3",

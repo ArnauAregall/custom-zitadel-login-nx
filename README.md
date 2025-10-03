@@ -23,10 +23,11 @@ For more information about Zitadel, visit the [zitadel/zitadel GitHub repository
 
 ## Project Structure
 
-- `apps/login`: Custom Next.js login application
+- `apps/login`: Zitadel's Next.js login application
 - `packages/zitadel-client`: Client library for Zitadel APIs
 - `packages/zitadel-proto`: Protocol buffer definitions and generated code
-- `proto/`: Protocol buffer source files
+- `proto/`: Protocol buffer source files, fetched from the Zitadel upstream repository
+- `tools/`: Custom scripts for managing the workspace and fetching upstream changes
 
 ## Getting Started
 
@@ -53,7 +54,7 @@ To set up the project locally, follow these steps:
 3. Fetch the Zitadel upstream repository dependencies:
 
    ```shell
-   ./zitadel_upstream_fetch.sh all
+   pnpm run upstream:fetch:all
    ```
 
 4. Install the project dependencies using pnpm:
@@ -69,6 +70,7 @@ To build and test the project, follow these steps:
 1. Build and test the projects using Nx:
     
     ```shell
+    pnpm nx reset
     pnpm nx run-many --targets lint build test
     ```
 
@@ -79,8 +81,8 @@ To build and test the project, follow these steps:
     pnpm nx reset
     ```
 
-   3. Clean the entire repository (optional):
-   If you want to remove all generated files and start fresh, you can run:
+3. Clean the entire repository (optional):
+    If you want to remove all generated files and start fresh, you can run:
 
     ```shell
     pnpm nx run-many --targets clean
@@ -117,3 +119,30 @@ To run the custom login application locally:
   -t custom-zitadel-login-nx:latest \
   apps/login
 ```
+
+## Fetching Upstream Changes
+
+To keep your fork up to date with the upstream Zitadel repository, you can use the provided scripts:
+
+- Fetch all upstream changes:
+
+    ```shell
+    pnpm run upstream:fetch:all
+    ```
+- Fetch only proto files:
+
+    ```shell
+    pnpm run upstream:fetch:proto
+    ```
+  
+- Fetch only login files:
+
+    ```shell
+    pnpm run upstream:fetch:login
+    ```
+
+- Clean, re-fetch all upstream changes and reinstall dependencies:
+
+    ```shell
+    pnpm run upstream:clean && pnpm run upstream:fetch:all && pnpm install
+    ```
